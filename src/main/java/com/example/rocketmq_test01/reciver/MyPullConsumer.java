@@ -31,6 +31,7 @@ public class MyPullConsumer {
                 System.out.println(new String(ext.getBody(), StandardCharsets.UTF_8));
             }
         }
+
         consumer.shutdown();
     }
 }
