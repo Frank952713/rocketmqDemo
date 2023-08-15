@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 
+/**
+ * 消费者pull模式
+ */
 public class MyPullConsumer {
     public static void main(String[] args) throws Exception {
         DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("consumer_0");
@@ -19,6 +22,7 @@ public class MyPullConsumer {
 
         Set<MessageQueue> messageQueueSet = consumer.fetchSubscribeMessageQueues("tp_2");
         for (MessageQueue m : messageQueueSet) {
+
             PullResult result = consumer.pull(m, "*", 0, 10);
             System.out.println("消息消息：" + m);
 
