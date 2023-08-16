@@ -1,5 +1,6 @@
 package com.example.rocketmq_test01.reciver;
 
+import cn.hutool.core.util.ObjectUtil;
 import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.PullResult;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -20,7 +21,7 @@ public class MyPullConsumer {
         consumer.setNamesrvAddr("127.0.0.1:9876");
         consumer.start();
 
-        Set<MessageQueue> messageQueueSet = consumer.fetchSubscribeMessageQueues("tp_2");
+        Set<MessageQueue> messageQueueSet = consumer.fetchSubscribeMessageQueues("tp_1");
         for (MessageQueue m : messageQueueSet) {
 
             PullResult result = consumer.pull(m, "*", 0, 10);
@@ -28,7 +29,7 @@ public class MyPullConsumer {
 
             List<MessageExt> msgFoundList = result.getMsgFoundList();
             for (MessageExt ext : msgFoundList) {
-                System.out.println(new String(ext.getBody(), StandardCharsets.UTF_8));
+                    System.out.println(new String(ext.getBody(), StandardCharsets.UTF_8));
             }
         }
 
