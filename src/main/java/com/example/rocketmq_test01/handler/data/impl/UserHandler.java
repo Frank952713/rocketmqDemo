@@ -16,7 +16,8 @@ public class UserHandler extends MsgHandler {
 
     @Override
     protected void add(Long id) {
-
+        log.info("user用户插入es，id:{}",id);
+        //……
     }
 
     @Override

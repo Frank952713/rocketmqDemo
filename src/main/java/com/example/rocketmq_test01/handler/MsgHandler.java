@@ -14,7 +14,6 @@ import java.util.Map;
 @AllArgsConstructor
 public abstract class MsgHandler {
 
-
     public void doHandleMessage(RecordData msg) {
         Long id = Long.valueOf(msg.getPkValue());
         switch (msg.getType()) {
@@ -32,6 +31,7 @@ public abstract class MsgHandler {
                 Map<String,Object> changeColumns =
                         msg.getColumns().stream()
                                 .collect(HashMap::new,(m,v)-> m.put(v.getName(),v.getAfterValue()),HashMap::putAll);
+                //m: HashMap::new新建的HashMap,v:columns
                 this.update(id,changeColumns);
                 break;
         }
